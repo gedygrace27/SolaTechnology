@@ -63,9 +63,9 @@
         }
 
         .logo img {
-            width: 35px;
-            height: 35px;
-            border-radius: 8px;
+            width: 12%;
+            height: 12%;
+            border-radius: 50%;
         }
 
         .log { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.5px; }
@@ -81,10 +81,16 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
-            transition: var(--transition);
+           transition: var(--transition)
         }
 
-        .nav-links a:hover { color: var(--primary); }
+        .nav-links a:hover { 
+            color: white;
+            background-color: #007952;
+            padding: 2px 10px;
+            border-radius: 8px;
+             transform: translateY(-5px);
+         }
 
         /* --- Hero Section --- */
         .hero {
@@ -197,74 +203,82 @@
         .card-content { padding: 25px; text-align: left; }
         .card-content p { font-weight: 700; font-size: 1.1rem; }
 
-        /* --- Footer --- */
-        footer {
+     footer {
             background: var(--dark);
             color: white;
-            padding: 80px 10% 40px;
+            padding: 80px 8% 40px;
         }
 
-       .fot {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* better alignment */
-    margin-bottom: 50px;
-    flex-wrap: wrap; /* responsive */
-    gap: 15px;
-}
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 50px;
+        }
 
-.fot .both {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+        /* Your Requested Icon + Name Structure */
+        .both {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
 
-.fot img {
-    width: 45px;        /* fixed size instead of % */
-    height: 45px;
-    border-radius: 50%;
-    object-fit: cover;
-}
+        .both img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
 
-.fot h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.8rem;
-    margin: 0;
-}
+        .both h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            color: var(--white);
+        }
 
-.tagline {
-    color: var(--slate-400);
-    text-transform: none;
-    letter-spacing: 0;
-    margin: 0;
-    font-size: 0.95rem;
-}
-        .cont p { color: var(--primary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;}
-        
+        .footer-tagline {
+            color: var(--slate-400);
+            max-width: 320px;
+            font-size: 0.95rem;
+        }
+
+        .footer-social-box p {
+            color: white;
+            font-size: 1.1rem;
+            margin-left: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
         .social-links {
-            flex-direction:row;
             display: flex;
             gap: 15px;
             list-style: none;
         }
 
         .social-links a {
-            width: 45px;
-            height: 45px;
+            width: 48px;
+            height: 48px;
             background: rgba(255,255,255,0.05);
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             transition: var(--transition);
             text-decoration: none;
         }
 
         .social-links a:hover {
             background: var(--primary);
-            transform: rotate(360deg);
+            transform: translateY(-5px);
+            color: white;
         }
 
         .copyright {
@@ -275,11 +289,12 @@
             color: var(--slate-400);
         }
 
-        /* --- Mobile --- */
-        @media (max-width: 850px) {
-            .aut { flex-direction: column; text-align: center; }
+        /* --- Responsive Styles --- */
+        @media (max-width: 900px) {
+            .about-content { flex-direction: column; text-align: center; }
             .nav-links { display: none; }
-            .fot { flex-direction: column; gap: 40px; text-align: center; align-items: center; }
+            .footer-top { flex-direction: column; align-items: center; text-align: center; gap: 40px; }
+            .both { justify-content: center; }
         }
     </style>
 </head>
@@ -303,7 +318,7 @@
 
     <section class="hero" id="home">
        <div class="txt">
-         <h1>እንኳን በደህና መጡ!</h1>
+         <h1>እንኳን ደህና መጡ!</h1>
         <p>I build beautiful, functional digital experiences through <br> code and creative design.</p>
         <a href="#portfolio" class="btn">View My Work</a>
        </div>
@@ -325,19 +340,23 @@
         <div class="grid-container">
             <div class="card">
                 <img src="lo2.jpg" alt="Logo Design">
+                <div class="card-content"><p>Logo design</p></div>
+            </div>
+            <div class="card">
+                <img src="log2.jpg" alt="Logo Design">
                 <div class="card-content"><p>Brand Identity</p></div>
             </div>
             <div class="card">
                 <img src="pos.jpg" alt="Poster Design">
-                <div class="card-content"><p>Creative Graphics</p></div>
+                <div class="card-content"><p>Church poster</p></div>
             </div>
             <div class="card">
                 <img src="banner.jpg" alt="Banner Design">
-                <div class="card-content"><p>Digital Marketing</p></div>
+                <div class="card-content"><p>Banner design</p></div>
             </div>
         </div>
     </section>
-
+           <hr>
     <section class="certeficat" id="certeficates">
         <h2 class="section-title">Certifications</h2>
         <div class="grid-container">
@@ -350,31 +369,45 @@
                 <div class="card-content"><p>Graphic Design Pro</p></div>
             </div>
             <div class="card">
-                <img src="andro.png" alt="App Development">
+                <img src="andro.jpg" alt="App Development">
                 <div class="card-content"><p>Mobile App Development</p></div>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
-      
-            <div class="cont">
-                <div class="fot">
-    <div class="both">
-        <img src="icon.png" alt="Sola Tech Icon">
-        <h1>SOLA TECH</h1>
-    </div>
+   
+ <footer id="contact">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="both">
+                    <img src="icon.png" alt="Icon">
+                    <h2>SOLA TECH</h2>
+                </div>
+                <p class="footer-tagline">Crafting digital solutions with precision and creativity.</p>
+            </div>
 
-               
+            <div class="footer-social-box">
+                <p>Visit us here.</p>
                 <ul class="social-links">
-                     <p>Get in touch</p>
-                    <li><a href="https://web.facebook.com/profile.php?id=61565264810538" target="_blank"><i class="uil uil-facebook-f"></i></a></li>
-                    <li><a href="https://t.me/gedygrace" target="_blank"><i class="uil uil-telegram"></i></a></li>
-                    <li><a href="https://www.linkedin.com/in/gedyon-beyene-83620a3b5/" target="_blank"><i class="uil uil-linkedin"></i></a></li>
+                    <li>
+                        <a href="https://web.facebook.com/profile.php?id=61565264810538" target="_blank">
+                            <i class="uil uil-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://t.me/gedygrace" target="_blank">
+                            <i class="uil uil-telegram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/gedyon-beyene-83620a3b5/" target="_blank">
+                            <i class="uil uil-linkedin"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
-             <p class="tagline">Innovating through design.</p>
         </div>
+
         <div class="copyright">
             &copy; 2026 GEDYON | SOLA TECH. All Rights Reserved.
         </div>
