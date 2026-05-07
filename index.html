@@ -73,7 +73,6 @@
 
         .log { font-weight: 800; font-size: 1.2rem; font-family: 'Montserrat', sans-serif; }
 
-        /* Mobile Menu Toggle */
         .menu-btn {
             display: none;
             font-size: 1.8rem;
@@ -113,7 +112,6 @@
             text-align: center;
             color: white;
             padding: 0 20px;
-            
         }
 
         .hero h1 {
@@ -221,45 +219,140 @@
         .card-content { padding: 20px; }
         .card-content p { font-weight: 700; color: var(--dark); }
 
-        /* --- Footer --- */
+        /* --- MODERN FOOTER --- */
         footer {
             background: var(--dark);
             color: white;
-            padding: 60px 5% 30px;
+            padding: 80px 8% 40px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .footer-top {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+        /* Subtle Background Decoration */
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: var(--primary);
+            filter: blur(120px);
+            opacity: 0.15;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
 
-        .both { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
-        .both img { width: 40px; height: 40px; border-radius: 50%; }
-        .both h2 { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--primary); }
+        .footer-brand .both { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            margin-bottom: 20px; 
+        }
 
-        .footer-tagline { color: var(--slate-400); max-width: 300px; }
+        .footer-brand .both img { 
+            width: 45px; 
+            height: 45px; 
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+        }
 
-        .social-links { display: flex; gap: 15px; list-style: none; margin-top: 15px; }
+        .footer-brand h2 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 1.6rem; 
+            letter-spacing: 1px;
+            color: var(--white); 
+        }
+
+        .footer-tagline { 
+            color: var(--slate-400); 
+            font-size: 0.95rem;
+            max-width: 300px;
+            line-height: 1.8;
+        }
+
+        .footer-heading {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        /* Contact Details Styles */
+        .footer-contact-list {
+            list-style: none;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: var(--slate-100);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item i {
+            font-size: 1.4rem;
+            color: var(--primary);
+            background: rgba(16, 185, 129, 0.1);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .contact-item:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        /* Social Links Styles */
+        .social-links { 
+            display: flex; 
+            gap: 15px; 
+            list-style: none; 
+        }
+
         .social-links a {
-            width: 45px; height: 45px;
-            background: rgba(255,255,255,0.1);
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; color: white; font-size: 1.2rem;
-            transition: var(--transition); text-decoration: none;
+            width: 45px; 
+            height: 45px;
+            background: rgba(255,255,255,0.05);
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            border-radius: 12px; 
+            color: white; 
+            font-size: 1.3rem;
+            transition: var(--transition); 
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .social-links a:hover { background: var(--primary); transform: translateY(-5px); }
+        .social-links a:hover { 
+            background: var(--primary); 
+            color: white;
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+        }
 
         .copyright {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 30px;
             text-align: center;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--slate-400);
-            line-height: 1.8;
+            letter-spacing: 0.5px;
         }
 
         /* --- Responsive Logic --- */
@@ -289,6 +382,10 @@
 
             .hero { padding-top: 70px; }
             .aut img { flex: 1 1 100%; }
+
+            footer { padding: 60px 5% 30px; text-align: center; }
+            .footer-brand .both, .contact-item, .social-links { justify-content: center; }
+            .footer-tagline { margin: 0 auto; }
         }
     </style>
 </head>
@@ -373,27 +470,44 @@
     </section>
 
     <footer id="contact">
-        <div class="footer-top">
+        <div class="footer-grid">
+            <!-- Brand Section -->
             <div class="footer-brand">
                 <div class="both">
                     <img src="icon.png" alt="Icon">
                     <h2>SOLA TECH</h2>
                 </div>
-                <p class="footer-tagline">Crafting digital solutions with precision and creativity.</p>
+                <p class="footer-tagline">Crafting digital solutions with precision and creativity. Bringing your vision to the digital world.</p>
             </div>
 
-            <div class="footer-social-box">
-                <p>Visit us here.</p>
+            <!-- Contact Section -->
+            <div class="footer-contact">
+                <h4 class="footer-heading">Contact Us</h4>
+                <div class="footer-contact-list">
+                    <a href="tel:+251992234026" class="contact-item">
+                        <i class="uil uil-outgoing-call"></i>
+                        <span>+251 992 234 026</span>
+                    </a>
+                    <a href="mailto:gedygrace27@gmail.com" class="contact-item">
+                        <i class="uil uil-envelope-alt"></i>
+                        <span>gedygrace27@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Socials Section -->
+            <div class="footer-socials">
+                <h4 class="footer-heading">Follow Us</h4>
                 <ul class="social-links">
-                    <li><a href="https://web.facebook.com/profile.php?id=61565264810538" target="_blank"><i class="uil uil-facebook-f"></i></a></li>
-                    <li><a href="https://t.me/gedygrace" target="_blank"><i class="uil uil-telegram"></i></a></li>
-                    <li><a href="https://www.linkedin.com/in/gedyon-beyene-83620a3b5/" target="_blank"><i class="uil uil-linkedin"></i></a></li>
+                    <li><a href="https://web.facebook.com/profile.php?id=61565264810538" target="_blank" title="Facebook"><i class="uil uil-facebook-f"></i></a></li>
+                    <li><a href="https://t.me/gedygrace" target="_blank" title="Telegram"><i class="uil uil-telegram"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/gedyon-beyene-83620a3b5/" target="_blank" title="LinkedIn"><i class="uil uil-linkedin"></i></a></li>
                 </ul>
             </div>
         </div>
 
         <div class="copyright">
-            POWERED BY GEDYON - BEYENE &copy; 2026 | SOLA TECH.<br> All Rights Reserved.
+            POWERED BY <strong>GEDYON-BEYENE</strong> &copy; 2026 | SOLA TECH. <br> All Rights Reserved.
         </div>
     </footer>
 
