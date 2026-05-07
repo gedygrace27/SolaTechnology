@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary: #10b981;
@@ -33,19 +34,20 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--slate-100);
             color: var(--dark);
-            line-height: 1.7;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* --- Navigation --- */
         nav {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             height: 70px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 10%;
+            padding: 0 5%;
             position: fixed;
             width: 100%;
             top: 0;
@@ -59,21 +61,30 @@
             gap: 10px;
             text-decoration: none;
             color: var(--dark);
-            font-family: 'Montserrat', sans-serif;
+            z-index: 1001;
         }
 
         .logo img {
-            width: 8%;
-            height: 8%;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
+            object-fit: cover;
         }
 
-        .log { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.5px; }
+        .log { font-weight: 800; font-size: 1.2rem; font-family: 'Montserrat', sans-serif; }
+
+        /* Mobile Menu Toggle */
+        .menu-btn {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
 
         .nav-links ul {
             display: flex;
             list-style: none;
-            gap: 35px;
+            gap: 25px;
         }
 
         .nav-links a {
@@ -81,221 +92,202 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
-           transition: var(--transition)
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: 8px;
         }
 
         .nav-links a:hover { 
-            color: white;
-            background-color: #007952;
-            padding: 2px 10px;
-            border-radius: 8px;
-             transform: translateY(-5px);
-         }
+            color: var(--white);
+            background-color: var(--primary);
+        }
 
         /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(rgba(0,0,0, 0.6), rgba(0,0,0, 0.8)),
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)),
                         url('gd.png') no-repeat center center/cover;
             height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: white;
             padding: 0 20px;
-            
         }
-   .hero .txt{
-    margin-top: 200px;
-   }
+
         .hero h1 {
-            font-size: clamp(2.9rem, 11vw, 7rem);
-            font-weight: bold;
-            line-height: 1.1;
-            background: linear-gradient(to bottom right, #04f1f1 30%, var(--primary));
+            font-size: clamp(2.2rem, 8vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffffff, var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
         }
 
         .hero p {
-            font-size: 1.4rem;
-            max-width: 600px;
-            color: var(--slate-400);
-            margin-bottom: 20px;
-
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            max-width: 700px;
+            margin: 0 auto 35px;
+            color: var(--slate-100);
+            opacity: 0.9;
         }
 
         .btn {
             background: var(--primary);
             color: white;
-            padding: 12px 32px;
+            padding: 14px 36px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
+            display: inline-block;
             transition: var(--transition);
-            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
-            margin-right: 115px;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
         }
 
         .btn:hover {
             transform: translateY(-3px);
             background: var(--primary-hover);
+            box-shadow: 0 15px 25px rgba(16, 185, 129, 0.4);
         }
 
         /* --- Sections --- */
-        section { padding: 100px 10%; }
+        section { padding: 80px 5%; }
 
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             font-weight: 800;
-            margin-bottom: 60px;
-            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto;
+            border-radius: 2px;
         }
 
         /* --- About Section --- */
         .abt { background: var(--white); }
         .aut {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
-            gap: 50px;
+            gap: 40px;
             max-width: 1100px;
             margin: 0 auto;
         }
 
         .aut img {
+            flex: 1 1 350px;
             width: 100%;
-            max-width: 450px;
-            border-radius: 24px;
+            border-radius: 20px;
             box-shadow: var(--shadow);
+            object-fit: cover;
         }
 
-        .about-text { flex: 1; }
+        .about-text { flex: 1 1 350px; }
+        .about-text h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--primary); }
 
         /* --- Grid & Cards --- */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .card {
             background: var(--white);
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
             transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.03);
-            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
 
-        .card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
+        .card img { width: 100%; height: 230px; object-fit: cover; }
+        .card-content { padding: 20px; }
+        .card-content p { font-weight: 700; color: var(--dark); }
 
-        .card-content { padding: 25px; text-align: left; }
-        .card-content p { font-weight: 700; font-size: 1.1rem; }
-
-     footer {
+        /* --- Footer --- */
+        footer {
             background: var(--dark);
             color: white;
-            padding: 80px 8% 40px;
+            padding: 60px 5% 30px;
         }
 
         .footer-top {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 50px;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
-        /* Your Requested Icon + Name Structure */
-        .both {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
+        .both { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
+        .both img { width: 40px; height: 40px; border-radius: 50%; }
+        .both h2 { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--primary); }
 
-        .both img {
-            width: 45px;
-            height: 45px;
-            object-fit: contain;
-            border-radius: 50%;
-        }
+        .footer-tagline { color: var(--slate-400); max-width: 300px; }
 
-        .both h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 1.6rem;
-            letter-spacing: 1px;
-            color: var(--white);
-        }
-
-        .footer-tagline {
-            color: var(--slate-400);
-            max-width: 320px;
-            font-size: 0.95rem;
-        }
-
-        .footer-social-box p {
-            color: white;
-            font-size: 1.1rem;
-            margin-left: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            list-style: none;
-        }
-
+        .social-links { display: flex; gap: 15px; list-style: none; margin-top: 15px; }
         .social-links a {
-            width: 48px;
-            height: 48px;
-            background: rgba(255,255,255,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.3rem;
-            transition: var(--transition);
-            text-decoration: none;
+            width: 45px; height: 45px;
+            background: rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; color: white; font-size: 1.2rem;
+            transition: var(--transition); text-decoration: none;
         }
 
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
-            color: white;
-        }
+        .social-links a:hover { background: var(--primary); transform: translateY(-5px); }
 
         .copyright {
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 30px;
+            padding-top: 25px;
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--slate-400);
+            line-height: 1.8;
         }
 
-        /* --- Responsive Styles --- */
-        @media (max-width: 900px) {
-            .about-content { flex-direction: column; text-align: center; }
-            .nav-links { display: none; }
-            .footer-top { flex-direction: column; align-items: center; text-align: center; gap: 40px; }
-            .both { justify-content: center; }
+        /* --- Responsive Logic --- */
+        @media (max-width: 768px) {
+            .menu-btn { display: block; }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--white);
+                transition: 0.4s;
+                padding: 40px 0;
+            }
+
+            .nav-links.active { left: 0; }
+
+            .nav-links ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+
+            .nav-links a { font-size: 1.2rem; width: 80%; text-align: center; }
+
+            .hero { padding-top: 70px; }
+            .aut img { flex: 1 1 100%; }
         }
     </style>
 </head>
@@ -306,7 +298,10 @@
             <img src="solaLogo.png" alt="Logo">
             <div class="log">GEDYON.</div>
         </a>
-        <div class="nav-links">
+        <div class="menu-btn" id="menu-toggle">
+            <i class="uil uil-bars"></i>
+        </div>
+        <div class="nav-links" id="nav-menu">
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -318,10 +313,10 @@
     </nav>
 
     <section class="hero" id="home">
-       <div class="txt">
-         <h1>እንኳን ደህና መጡ!</h1>
-        <p>ጥራት ያላቸዉን  ዘመናዊ  Graphics እና  Website <br>አገልግሎቶችን የሚያገኙበት ቦታ!!</p>
-        <a href="#portfolio" class="btn">View My Work</a>
+       <div class="hero-content">
+            <h1>እንኳን ደህና መጡ!</h1>
+            <p>ጥራት ያላቸውን ዘመናዊ Graphics እና Website አገልግሎቶችን የሚያገኙበት ቦታ!!</p>
+            <a href="#portfolio" class="btn">View My Work</a>
        </div>
     </section>
 
@@ -357,7 +352,7 @@
             </div>
         </div>
     </section>
-           <hr>
+
     <section class="certeficat" id="certeficates">
         <h2 class="section-title">Certifications</h2>
         <div class="grid-container">
@@ -376,8 +371,7 @@
         </div>
     </section>
 
-   
- <footer id="contact">
+    <footer id="contact">
         <div class="footer-top">
             <div class="footer-brand">
                 <div class="both">
@@ -390,29 +384,37 @@
             <div class="footer-social-box">
                 <p>Visit us here.</p>
                 <ul class="social-links">
-                    <li>
-                        <a href="https://web.facebook.com/profile.php?id=61565264810538" target="_blank">
-                            <i class="uil uil-facebook-f"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://t.me/gedygrace" target="_blank">
-                            <i class="uil uil-telegram"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https:/A/www.linkedin.com/in/gedyon-beyene-83620a3b5/" target="_blank">
-                            <i class="uil uil-linkedin"></i>
-                        </a>
-                    </li>
+                    <li><a href="https://web.facebook.com/profile.php?id=61565264810538" target="_blank"><i class="uil uil-facebook-f"></i></a></li>
+                    <li><a href="https://t.me/gedygrace" target="_blank"><i class="uil uil-telegram"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/gedyon-beyene-83620a3b5/" target="_blank"><i class="uil uil-linkedin"></i></a></li>
                 </ul>
             </div>
         </div>
 
         <div class="copyright">
-            POWERED BY GEDYON - BEYENE &copy; 2026  | SOLA TECH.<br> All Rights Reserved.
+            POWERED BY GEDYON - BEYENE &copy; 2026 | SOLA TECH.<br> All Rights Reserved.
         </div>
     </footer>
 
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('uil-bars');
+            icon.classList.toggle('uil-multiply');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('uil-bars');
+                menuToggle.querySelector('i').classList.remove('uil-multiply');
+            });
+        });
+    </script>
 </body>
 </html>
